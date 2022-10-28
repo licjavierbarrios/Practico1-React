@@ -140,7 +140,7 @@ const MenuPopover = ({ children, sx, ...other }) => {
 		<Popover
 			anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
 			transformOrigin={{ vertical: "top", horizontal: "right" }}
-			paperProps={{ sx }}
+			PaperProps={{ sx }}
 			{...other}
 		>
 			{children}
