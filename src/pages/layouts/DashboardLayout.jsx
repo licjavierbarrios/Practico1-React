@@ -17,11 +17,15 @@ import {
 	Collapse,
 	Popover,
 	MenuItem as MenuItemMui,
+	Divider,
 } from "@mui/material";
 import { Outlet, useLocation, useNavigate, Link as RouterLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { drawerMenu, popMenu } from "../../constants/menu";
 import { ChevronRight, ExpandMore } from "@mui/icons-material";
+import { Stack } from "@mui/system";
+import { useSelector, useDispatch } from "react-redux";
+import { appSelector, appActions } from "../../redux/appRedux";
 
 const drawerWidth = 280;
 
@@ -151,7 +155,13 @@ const PopMenu = () => {
 	return (
 		<Box>
 			<IconButton size="small" sx={{ ml: 2 }} onClick={() => setOpen(true)} ref={menuRef}>
-				<Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+				<Avatar
+					sx={{ width: 34, height: 34 }}
+					src="https://scontent.firj1-1.fna.fbcdn.net/v/t1.18169-9/17309381_992465830886914_6456022277129432094_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=174925&_nc_ohc=lt1JM6Q6zMIAX8Ywhy_&tn=LZ0DHwnsfmBQva2C&_nc_ht=scontent.firj1-1.fna&oh=00_AT9jumHWqZtLC2l20B0emMWso3JXky6WMpu5NA73tXho7A&oe=63723492"
+				/>
+				<Typography variant="caption" color="white">
+					Maxy Barrios
+				</Typography>
 			</IconButton>
 			<MenuPopover
 				open={open}
@@ -182,6 +192,8 @@ const PopMenu = () => {
 };
 
 const DashboardLayout = () => {
+	const dispatch = useDispatch();
+	const pageTitle = useSelector(appSelector.pageTitle);
 	const [open, setOpen] = useState(false);
 	return (
 		<Box sx={{ display: "flex" }}>
@@ -194,10 +206,32 @@ const DashboardLayout = () => {
 					<Box px={2} sx={{ cursor: "pointer" }}>
 						<MenuIcon sx={{ color: "white" }} onClick={() => setOpen(true)} />
 					</Box>
-					<Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-						Pilar Tecno Web
-					</Typography>
-					<PopMenu />
+					<Stack direction="row" spacing={2} width="90%" justifyContent="end">
+						<Typography component="h1" variant="h6" color="inherit" noWrap display="inline">
+							Pilar Tecno Web
+						</Typography>
+						<Divider
+							orientation="vertical"
+							variant="middle"
+							flexItem
+							sx={{ color: "white" }}
+							display="inline"
+						/>
+
+						<Typography
+							component="h1"
+							variant="h6"
+							color="inherit"
+							noWrap
+							sx={{ flexGrow: 1 }}
+							display="inline"
+						>
+							{pageTitle}
+						</Typography>
+					</Stack>
+					<Stack direction="row" justifyContent="end">
+						<PopMenu />
+					</Stack>
 				</Toolbar>
 			</AppBar>
 
