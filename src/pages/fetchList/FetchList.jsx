@@ -68,7 +68,6 @@ const FetchList = () => {
 			dispatch(appActions.loading(true));
 			const result = await api.GET(api.pokemons);
 			if (result) {
-				console.log("poke: ", result);
 				setPokemons(result.results);
 				setNext(result.next);
 			}
@@ -84,7 +83,6 @@ const FetchList = () => {
 			dispatch(appActions.loading(true));
 			const result = await api.GET(next);
 			if (result) {
-				console.log("poke: ", result);
 				setPokemons([...pokemons, ...result.results]);
 				setNext(result.next);
 			}
@@ -96,7 +94,6 @@ const FetchList = () => {
 	};
 
 	const getPokemonImgId = (id) => {
-		console.log("long. " + id.length);
 		switch (id.length) {
 			case 1:
 				return `00${id}`;
