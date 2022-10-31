@@ -26,7 +26,7 @@ const style = {
 	top: "50%",
 	left: "50%",
 	transform: "translate(-50%, -50%)",
-	width: 400,
+	width: 600,
 	bgcolor: "background.paper",
 	border: "2px solid #000",
 	boxShadow: 24,
@@ -162,7 +162,11 @@ const FetchList = () => {
 						<Card sx={style}>
 							<CardContent>
 								<Stack mt={2} direction="row" spacing={1} sx={{ justifyContent: "space-around", alignItems:'center' }}>
-									<Stack direction='row' spacing={1}>
+									<Stack 
+										direction='row' 
+										spacing={1}
+										
+									>
 										<Typography variant="span" color='white' >Id:</Typography>
 										<Typography variant="span" sx={{ color: "#c2c211" }}>
 											{pokemon?.id}
@@ -171,7 +175,7 @@ const FetchList = () => {
 									<Typography
 										textAlign="center"
 										id="modal-modal-title"
-										variant="h3"
+										variant="h2"
 										component="h2"
 										color="#c2c211"
 									>
