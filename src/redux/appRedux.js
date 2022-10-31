@@ -7,6 +7,7 @@ const SET_PAGE_NAME = "SET_PAGE_NAME";
 // State inicial
 const stateInitial = {
 	pageTitle: "prueba",
+	loading: false,
 	todo: [],
 };
 
@@ -34,6 +35,11 @@ export const appActions = {
 	deleteTodo: (id) => ({
 		type: DELETE_TODO,
 		id,
+	}),
+
+	loading: (payload) => ({
+		type: "LOADING",
+		payload,
 	}),
 };
 
@@ -75,6 +81,12 @@ export const appReducer = (state = stateInitial, action) => {
 				...state,
 				todo: state.todo.filter((t) => t.id !== action.id),
 			};
+		case "LOADING":
+			return {
+				...state,
+				loading: action.payload,
+			};
+			
 		default:
 			return state;
 	}
